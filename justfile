@@ -12,6 +12,12 @@ default:
 pdf:
     scripts/build-pdf.sh
 
+# Build PDF hymnal in a container. Usage: just pdf-docker [engine] (default: docker)
+[group('pdf')]
+pdf-docker engine='docker':
+    {{ engine }} build -t hymns-pdf .
+    {{ engine }} run --rm -v "$(pwd)":/data hymns-pdf
+
 # Generate social image for a single hymn
 
 # Generate an image. Usage: just image <hymn_id>
