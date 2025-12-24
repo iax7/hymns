@@ -7,9 +7,19 @@ set shell := ["zsh", "-cu"]
 default:
     @just --list
 
+# Check content/*.md for non-NFC Unicode (fails the PDF build otherwise)
+[group('pdf')]
+check-unicode:
+    python3 scripts/normalize_unicode.py --check
+
+# Normalize content/*.md to NFC Unicode
+[group('pdf')]
+fix-unicode:
+    python3 scripts/normalize_unicode.py
+
 # Build PDF hymnal
 [group('pdf')]
-pdf:
+pdf: check-unicode
     scripts/build-pdf.sh
 
 # Build PDF hymnal in Docker (no local pandoc/LaTeX/tlmgr install needed)
