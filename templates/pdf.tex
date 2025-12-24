@@ -1,0 +1,54 @@
+\documentclass[14pt,letterpaper,twocolumn]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage[hidelinks]{hyperref}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\setcounter{secnumdepth}{0}
+
+% Typography
+\usepackage{ebgaramond} % EBGaramond (Body)
+\usepackage{gillius}    % Gillius (Titles)
+
+% Title Formatting
+\titleformat{\section}
+  {\normalfont\Large\bfseries\centering\fontfamily{jgill}\selectfont}
+  {}{0em}{}
+  
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\centering\itshape}
+  {}{0em}{}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\setlength{\columnsep}{1cm}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    {\Huge\bfseries Himnario de la Gracia\par}
+    \vspace{1cm}
+    {\Large Mision Bíblica de la Gracia\par}
+    \vfill
+    {\large \today\par}
+\end{titlepage}
+
+\newpage
+
+$body$
+
+\end{document}
