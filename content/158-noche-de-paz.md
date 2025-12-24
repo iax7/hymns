@@ -1,0 +1,29 @@
+---
+id: 158
+Title: Noche De Paz
+autor: Joseph Mohr
+compositor: Franz Gruber
+titulo_ingles: Silent Night
+versiculo:
+---
+
+Noche de paz, noche de amor.  
+Todo duerme en derredor.  
+Entre los astros que esparcen su luz,  
+bella anunciando al niñito Jesús,  
+brilla la estrella de paz,  
+brilla la estrella de paz.  
+
+Noche de paz, noche de amor.  
+Oye humilde, fiel pastor:  
+coros celestes proclaman salud,  
+gracias y glorias en gran plenitud,  
+por nuestro buen Redentor,  
+por nuestro buen Redentor.  
+
+Noche de paz, noche de amor.  
+Ved qué bello resplandor  
+Luce en el rostro del niño Jesús,  
+en el pesebre, del mundo la Luz;  
+astro de eterno fulgor,  
+astro de eterno fulgor.  
