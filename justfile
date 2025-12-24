@@ -12,6 +12,12 @@ default:
 pdf:
     scripts/build-pdf.sh
 
+# Build PDF hymnal in Docker (no local pandoc/LaTeX/tlmgr install needed)
+[group('pdf')]
+pdf-docker:
+    docker build -t hymns-pdf .
+    docker run --rm -v "$(pwd)":/data hymns-pdf
+
 # Generate social image for a single hymn
 
 # Generate an image. Usage: just image <hymn_id>
