@@ -1,13 +1,11 @@
 ---
-id: "1"
-title: Oh gran Dios
+id: 1
+Title: Oh gran Dios
 Autor: Bob Kauflin
 Compositor: Bob Kauflin
 Título en inglés: O Great God
 Versículo: 2 Corintios 4:6
 ---
-
-# 1. Oh gran Dios
 
 Oh gran Dios altísimo, reina en mi corazón;  
 Sé Tú el dueño de mi ser, vence toda rebelión.  
