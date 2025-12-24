@@ -1,0 +1,16 @@
+baseURL = 'https://iax7.github.io/hymns/'
+languageCode = 'es-es'
+title = 'Mision Bíblica de la Gracia'
+theme = []
+
+[taxonomies]
+  tag = 'tags'
+
+[params]
+  description = 'Himnario digital y PDF'
+
+[menu]
+  [[menu.main]]
+    name = 'Todos los Himnos'
+    url = '/post/'
+    weight = 1
