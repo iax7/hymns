@@ -1,0 +1,49 @@
+{{ define "main" }}
+<article class="hymn-article">
+    <header class="hymn-header">
+        <span class="hymn-meta">Himno {{ .Params.numero }}</span>
+        <h1 class="hymn-main-title">{{ .Title }}</h1>
+        {{ if .Params.subtitulo }}<p class="hymn-subtitle">{{ .Params.subtitulo }}</p>{{ end }}
+    </header>
+
+    <div class="hymn-content">
+        {{ .Content }}
+    </div>
+
+    <footer class="hymn-footer">
+        <div class="hymn-metadata">
+            {{ with .Params.Autor }}<p><strong>Autor:</strong> {{ . }}</p>{{ end }}
+            {{ with .Params.Compositor }}<p><strong>Compositor:</strong> {{ . }}</p>{{ end }}
+            {{ with or .Params.versículo .Params.versiculo (index .Params "Versículo") }}<p><strong>Versículo:</strong> {{ . }}</p>{{ end }}
+            {{ with or (index .Params "Título en inglés") (index .Params "Titulo en ingles") }}<p><strong>Título Original:</strong> {{ . }}</p>{{ end }}
+        </div>
+    </footer>
+
+    <nav class="hymn-nav">
+        <div class="font-controls">
+            <button onclick="adjustFontSize(-0.1)" class="btn-font" aria-label="Disminuir tamaño de letra">A-</button>
+            <button onclick="adjustFontSize(0.1)" class="btn-font" aria-label="Aumentar tamaño de letra">A+</button>
+        </div>
+        <a href="{{ .Site.Home.RelPermalink }}" class="btn-back">← Volver al índice</a>
+    </nav>
+</article>
+
+<script>
+    function adjustFontSize(delta) {
+        const content = document.querySelector('.hymn-content');
+        const currentSize = parseFloat(window.getComputedStyle(content).fontSize);
+        // Default base size might be in px now, lets adjust.
+        // Convert rem to px logic or just add pixels. 
+        // Simpler: get current px value and add delta * 16 (assuming 1rem = 16px) or just work in pixels.
+        
+        // Let's use a scale factor variable if possible, or direct manipulation.
+        // Direct manipulation of pixel size is safest universally.
+        
+        let newSize = currentSize + (delta * 16);
+        if (newSize < 12) newSize = 12; // Min size
+        if (newSize > 40) newSize = 40; // Max size
+        
+        content.style.fontSize = newSize + 'px';
+    }
+</script>
+{{ end }}
