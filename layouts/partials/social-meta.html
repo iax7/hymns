@@ -1,0 +1,31 @@
+{{- $title := cond .IsHome .Title (printf "Himno %d" .Params.id) -}}
+{{- $description := "" -}}
+{{- if .Description -}}
+  {{- $description = .Description -}}
+{{- else if .IsHome -}}
+  {{- $description = .Site.Params.description -}}
+{{- else -}}
+  {{- $description = .Title -}}
+  {{- with .Params.Autor -}}
+    {{- $description = printf "%s - %s" $.Title . -}}
+  {{- end -}}
+{{- end -}}
+{{- $image := printf "%simages/hymns-social.jpg" .Site.BaseURL -}}
+
+<!-- Open Graph / WhatsApp / Facebook -->
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:image" content="{{ $image }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:locale" content="es_ES">
+
+<!-- Twitter Card (also used by WhatsApp) -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ .Permalink }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $image }}">

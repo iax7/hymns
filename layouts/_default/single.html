@@ -1,0 +1,97 @@
+{{ define "main" }}
+<article class="hymn-article">
+  <header class="hymn-header">
+    <span class="hymn-meta" onclick="copyToClipboard('{{ .Permalink }}')" style="cursor: pointer;" title="Click para copiar enlace">Himno {{ .Params.id }}</span>
+    <h1 class="hymn-main-title">{{ .Title }}</h1>
+    {{ if .Params.subtitulo }}<p class="hymn-subtitle">{{ .Params.subtitulo }}</p>{{ end }}
+  </header>
+
+  <div class="hymn-content">
+    {{ .Content }}
+  </div>
+
+  <footer class="hymn-footer">
+    <div class="hymn-metadata">
+      {{ with .Params.Autor }}<p><strong>Autor:</strong> {{ . }}</p>{{ end }}
+      {{ with .Params.Compositor }}<p><strong>Compositor:</strong> {{ . }}</p>{{ end }}
+      {{ with or .Params.versículo .Params.versiculo (index .Params "Versículo") }}<p><strong>Versículo:</strong>
+        {{ . }}</p>{{ end }}
+      {{ with or (index .Params "Título en inglés") (index .Params "Titulo en ingles") }}<p><strong>Título
+          Original:</strong> {{ . }}</p>{{ end }}
+    </div>
+  </footer>
+
+  <nav class="hymn-nav">
+    <div class="font-controls">
+      <button onclick="adjustFontSize(-0.1)" class="btn-font" aria-label="Disminuir tamaño de letra">A-</button>
+      <button onclick="adjustFontSize(0.1)" class="btn-font" aria-label="Aumentar tamaño de letra">A+</button>
+    </div>
+    <a href="{{ .Site.Home.RelPermalink }}" class="btn-back">← Volver al índice</a>
+  </nav>
+</article>
+
+<script>
+  // Wake Lock to keep the screen active
+  let wakeLock = null;
+
+  async function requestWakeLock() {
+    try {
+      if ('wakeLock' in navigator) {
+        wakeLock = await navigator.wakeLock.request('screen');
+        console.log('Wake Lock active - screen will stay on');
+
+        // Handle when the Wake Lock is released
+        wakeLock.addEventListener('release', () => {
+          console.log('Wake Lock released');
+        });
+      }
+    } catch (err) {
+      console.error(`Error activating Wake Lock: ${err.name}, ${err.message}`);
+    }
+  }
+
+  // Reactivate Wake Lock when the page becomes visible again
+  document.addEventListener('visibilitychange', async () => {
+    if (wakeLock !== null && document.visibilityState === 'visible') {
+      await requestWakeLock();
+    }
+  });
+
+  // Activate Wake Lock when the page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    requestWakeLock();
+  });
+
+  // Release Wake Lock when the user leaves the page
+  window.addEventListener('beforeunload', () => {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  });
+
+  function adjustFontSize(delta) {
+    const content = document.querySelector('.hymn-content');
+    const currentSize = parseFloat(window.getComputedStyle(content).fontSize);
+
+    let newSize = currentSize + (delta * 16);
+    if (newSize < 12) newSize = 12; // Min size
+    if (newSize > 40) newSize = 40; // Max size
+
+    content.style.fontSize = newSize + 'px';
+  }
+
+  function copyToClipboard(url) {
+    navigator.clipboard.writeText(url).then(() => {
+      const meta = document.querySelector('.hymn-meta');
+      const originalText = meta.innerText;
+      meta.innerText = '✓ Enlace copiado';
+      setTimeout(() => {
+        meta.innerText = originalText;
+      }, 1500);
+    }).catch(err => {
+      console.error('Error copying to clipboard:', err);
+    });
+  }
+</script>
+{{ end }}

@@ -1,1 +1,51 @@
-# hymns
+# Hymns
+
+Digital hymnary project supporting static website generation (Hugo) and PDF output.
+
+## Prerequisites Setup (macOS)
+
+You will need **Homebrew** installed.
+
+```bash
+# Install dependencies
+brew install hugo pandoc
+
+# Install LaTeX (BasicTeX is enough, ~100MB vs 2GB for MacTeX)
+brew install --cask basictex
+
+# Install required LaTeX packages
+# After installing BasicTeX, you might need these packages for the template
+sudo tlmgr update --self
+sudo tlmgr install titlesec fancyhdr parskip etoolbox ms ebgaramond gillius
+```
+
+## Local Development
+
+To start the development server and view the site in real-time:
+
+```bash
+just serve
+```
+
+The site will be available at `http://localhost:1313/`.
+
+## Build
+
+To generate the static site for production (`public/` folder):
+
+```bash
+just build
+```
+
+## PDF
+
+To generate the hymnary PDF (requires `build-pdf.sh` script and dependencies):
+
+```bash
+just pdf
+```
+
+## License
+
+Code under MIT License. See [LICENSE](LICENSE) for details.
+**Note:** Content (hymn lyrics) copyright belongs to their respective authors.

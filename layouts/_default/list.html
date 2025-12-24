@@ -1,0 +1,33 @@
+{{ define "main" }}
+<section>
+  <div class="search-container">
+    <input type="search" id="busqueda" class="search-input" placeholder="Buscar por número o título..."
+      onkeyup="filtrar()">
+  </div>
+
+  <div id="lista-himnos" class="hymn-list">
+    {{ range .Pages.ByParam "id" }}
+    <a href="{{ .RelPermalink }}" class="hymn-item">
+      <span class="hymn-number">{{ .Params.id }}</span>
+      <span class="hymn-title">{{ .Title }}</span>
+    </a>
+    {{ end }}
+  </div>
+</section>
+
+<script>
+  function filtrar() {
+    let input = document.getElementById('busqueda').value.toLowerCase();
+    // Normalize: remove accents and punctuation, keep spaces
+    input = input.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
+
+    let items = document.getElementsByClassName('hymn-item');
+    for (let i = 0; i < items.length; i++) {
+      let text = items[i].innerText.toLowerCase();
+      // Normalize text: remove accents and punctuation, keep spaces
+      text = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ');
+      items[i].style.display = text.includes(input) ? "flex" : "none";
+    }
+  }
+</script>
+{{ end }}

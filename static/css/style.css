@@ -1,0 +1,336 @@
+/* Variables & Theme */
+:root {
+  --bg-color: #faf9f6;
+  --text-color: #2d3748;
+  --text-light: #718096;
+  --accent-color: #4a5568;
+  /* Slate Neutral */
+  --accent-hover: #2d3748;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --font-serif: "Libre Baskerville", serif;
+  --font-sans: "Inter", sans-serif;
+  --max-width: 700px;
+  --spacing-unit: 1rem;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a202c;
+  --text-color: #e2e8f0;
+  --text-light: #a0aec0;
+  --accent-color: #cbd5e0;
+  --accent-hover: #edf2f7;
+  --card-bg: #2d3748;
+  --border-color: #4a5568;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-color: #1a202c;
+    --text-color: #e2e8f0;
+    --text-light: #a0aec0;
+    --accent-color: #cbd5e0;
+    --accent-hover: #edf2f7;
+    --card-bg: #2d3748;
+    --border-color: #4a5568;
+  }
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* Layout */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-unit);
+}
+
+main {
+  padding-bottom: 4rem;
+}
+
+/* Navigation */
+.site-header {
+  padding: 1rem 3.5rem 1rem 1rem;
+  text-align: center;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme-toggle {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: var(--text-light);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.theme-toggle:hover {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.site-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.site-title a:hover {
+  color: var(--text-light);
+}
+
+@media (max-width: 480px) {
+  .site-title {
+    font-size: 1.15rem;
+  }
+}
+
+/* Search Input */
+.search-container {
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-color);
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+/* Hymn List */
+.hymn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-bottom: 2rem;
+}
+
+.hymn-item {
+  background-color: var(--card-bg);
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.hymn-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  border-color: var(--border-color);
+}
+
+.hymn-number {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  min-width: 2rem;
+}
+
+.hymn-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+/* Single Hymn View */
+.hymn-article {
+  margin-top: 1rem;
+}
+
+.hymn-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.hymn-meta {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.hymn-main-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.hymn-subtitle {
+  font-size: 1rem;
+  color: var(--text-light);
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+.hymn-content {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  white-space: normal;
+  text-align: center;
+  /* Poetry style */
+  color: var(--text-color);
+}
+
+/* Specific Hymn Styling */
+.hymn-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* Coro / Chorus Styling */
+/* Assuming markdown uses > blockquote or italics for chorus,
+   or we'll wrap it in a class if we can control markdown generation better.
+   For now, we'll style probable chorus indicators if present in update.
+   Or rely on .coro class if we inject it. */
+.coro {
+  font-style: italic;
+  color: var(--accent-color);
+  margin: 2rem 0;
+  display: block;
+}
+
+/* Footer / Navigation Buttons */
+.hymn-nav {
+  margin-top: 2rem;
+  padding-top: 0;
+  border-top: none;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.font-controls {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-font {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  /* Bold text for labels */
+  font-size: 0.9rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  /* Minimum width for touch targets */
+}
+
+.btn-font:hover {
+  background-color: var(--bg-color);
+  /* Slight background change */
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-font:active {
+  transform: translateY(0);
+  box-shadow: none;
+  background-color: var(--border-color);
+}
+
+.btn-back {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.btn-back:hover {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* Hymn Footer / Metadata */
+.hymn-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px dotted var(--border-color);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.hymn-metadata p {
+  margin-bottom: 0.25rem;
+}
+
+.hymn-metadata strong {
+  color: var(--text-color);
+  font-weight: 600;
+}

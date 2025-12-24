@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+
+  {{ partial "social-meta.html" . }}
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title"><a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a></h1>
+    </div>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar modo oscuro/claro">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </header>
+
+  <main class="container">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  <script>
+    (function () {
+      const toggle = document.getElementById('theme-toggle');
+      const icon = document.getElementById('theme-icon');
+      const html = document.documentElement;
+
+      // 1. Check local storage
+      const localTheme = localStorage.getItem('theme');
+      // 2. Check system preference
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+      // Set initial theme
+      let currentTheme = localTheme || systemTheme;
+      html.setAttribute('data-theme', currentTheme);
+      updateIcon(currentTheme);
+
+      toggle.addEventListener('click', function () {
+        // Toggle theme
+        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        // Apply
+        html.setAttribute('data-theme', currentTheme);
+        localStorage.setItem('theme', currentTheme);
+        updateIcon(currentTheme);
+      });
+
+      function updateIcon(theme) {
+        icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      }
+    })();
+  </script>
+</body>
+
+</html>
