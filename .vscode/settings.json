@@ -1,0 +1,13 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "editor.detectIndentation": false,
+  "[html]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": false
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  }
+}

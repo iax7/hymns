@@ -11,6 +11,10 @@
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 
+# Python
+__pycache__/
+*.py[cod]
+
 # Hugo
 /public/
 /resources/_gen/
