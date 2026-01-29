@@ -11,6 +11,9 @@
   {{- end -}}
 {{- end -}}
 {{- $image := printf "%simages/hymns-social.jpg" .Site.BaseURL -}}
+{{- if .Params.id -}}
+  {{- $image = printf "%simages/hymn-%03d.jpg" .Site.BaseURL .Params.id -}}
+{{- end -}}
 
 <!-- Open Graph / WhatsApp / Facebook -->
 <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
