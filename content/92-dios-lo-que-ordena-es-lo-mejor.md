@@ -1,0 +1,41 @@
+---
+id: 92
+title: Dios lo que ordena es lo mejor
+autor: Eduardo y Valeria Izquiero
+compositor: Eduardo y Valeria Izquiero
+titulo_original: Dios lo que ordena es lo mejor
+versiculo:
+---
+
+Dios lo que ordena es lo mejor,  
+Su voluntad es buena  
+Mientras él obra esperaré  
+y voy donde Él me guía  
+aún en la sombra Él es mi Dios  
+Él me sostiene; no caeré  
+Lo dejo todo en su control, lo dejo todo en su control  
+
+Dios lo que ordena es lo mejor,  
+en Él no hay engaño  
+en rectitud me guiará  
+Él nunca me abandona  
+con gozo en Su voluntad  
+de angustia Él me librará  
+Paciente en Él esperaré, paciente en Él esperaré  
+
+Dios lo que ordena es lo mejor,  
+Aún no sea fácil  
+puedo sentir debilidad  
+más sigo sin dudarlo  
+Él es verdad, Él es mi Dios  
+consuelo da a mi corazón  
+Mi pena él disipará, mi pena él disipará  
+
+Dios lo que ordena es lo mejor,  
+en esto yo confío  
+y en medio de la adversidad  
+no estoy abandonado  
+Mi Padre me protegerá y con su amor me sostendrá  
+lo dejo todo en su control; Él tiene todo en su control  
+Mi Padre me protegerá y con su amor me sostendrá  
+lo dejo todo en su control; Él tiene todo en su control  
